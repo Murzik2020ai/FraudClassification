@@ -1,0 +1,62 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Books</title>
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        crossorigin="anonymous">
+  <!--    <script>
+          document.addEventListener("DOMContentLoaded", function(){
+              var table = document.getElementById("table");
+              var rows = table.getElementsByTagName("tr");
+              for (i = 0; i < rows.length; i++) {
+                  var currentRow = table.rows[i];
+                  var createClickHandler =
+                      function(row)
+                      {
+                          return function() {
+                              var cell = row.getElementsByTagName("td")[0];
+                              var id = cell.innerHTML;
+                              document.location.href = '/book/'+id;
+                          };
+                      };
+
+                  currentRow.onclick = createClickHandler(currentRow);
+              }
+          })
+      </script>-->
+</head>
+
+<body>
+<h1 style="color: darkblue">Fraud detection by DataKit</h1>
+<h2>
+  <span id="prediction" name="prediction" th:text="${prediction}"></span>
+</h2>
+<form method="post" th:action="@{/sendLine}" th:object="${samplePrediction}">
+  <table>
+    <tr><th>Колонка с фичами</th><th>Колонка с фичами</th><th>Колонка с фичами</th></tr> <!--ряд с ячейками заголовков-->
+    <tr><td>V26
+      <div class="form-group">
+        <input id="v26" type="text" name="v26" class="form-control-file" th:value="${v26}"/>
+      </div>
+    </td><td>V1
+      <div class="form-group">
+        <input id="v1" type="text" name="v1" class="form-control-file" th:value="${v1}"/>
+      </div>
+    </td><td>Amount
+      <div class="form-group">
+        <input id="amount" type="text" name="amount"  class="form-control-file" th:value="${amount}"/>
+      </div>
+    </td></tr> <!--ряд с ячейками тела таблицы-->
+  </table>
+
+
+  <button type="submit" class="btn btn-primary">Get prediction</button>
+</form>
+
+</body>
+</html>
